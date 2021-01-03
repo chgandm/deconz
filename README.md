@@ -4,6 +4,14 @@ A simple Java library for the [deCONZ REST API](https://dresden-elektronik.githu
 offering support for interacting with lights and sensors, as well as receiving real-time through its
 WebSocket API.
 
+## Maven Dependency
+
+    <dependency>
+      <groupId>me.tresch</groupId>
+      <artifactId>deconz-java-client</artifactId>
+      <version>[version]</version>
+    </dependency>
+
 ## Usage
 
 In order to communicate with the deCONZ REST API, you'll first need to obtain an API key as explained in the
@@ -11,18 +19,21 @@ In order to communicate with the deCONZ REST API, you'll first need to obtain an
 
 `DeConzDeviceDiscovery deConzDisovery = new DeConzDeviceDiscovery(<url>, <apikey>);`
 
+## Devices
+All discovered deCONZ devices extend the `DeConzDevice` class.
+
 ### Listening for real-time state updates
 
 Obtain a reference to any deCONZ device, and register a consumer to handle state updates as follows:
-`subscribeForStateUpdate(Consumer<V> stateUpdateHandler)`
+`device.subscribeForStateUpdate(Consumer<V> stateUpdateHandler)`
 
 ### Lights
-`deConzDiscovery.discoverLights()`
+Obtain instances of class `DeConzLight` through: `deConzDiscovery.discoverLights()`
 
 ### Sensors
 Supported sensor types:
-* Switches (to detect button presses)
-* Open / close sensors (for doors and windows)
-* Presence sensors (to detect motion)
+* Switches (to detect button presses): class `DeConzSwitch`
+* Open / close sensors (for doors and windows):  class `DeConzOpenClose`
+* Presence sensors (to detect motion): class `DeConzPresence`
 
-`deConzDiscovery.discoverSensors()`
+Obtain sensors through `deConzDiscovery.discoverSensors()`.

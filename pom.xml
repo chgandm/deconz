@@ -6,7 +6,7 @@
 
     <groupId>me.tresch</groupId>
     <artifactId>deconz-java-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <java.version>1.11</java.version>
@@ -19,6 +19,14 @@
         <slf4j.version>1.7.30</slf4j.version>
         <caffeine.version>2.8.5</caffeine.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>chgandm</name>
+            <url>https://maven.pkg.github.com/chgandm/deconz</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
