@@ -3,6 +3,7 @@ package me.tresch.deconz.device;
 import me.tresch.deconz.client.DeConzClient;
 import me.tresch.deconz.device.button.DeConzSwitch;
 import me.tresch.deconz.device.light.DeConzLight;
+import me.tresch.deconz.device.lightlevel.DeConzLightLevel;
 import me.tresch.deconz.device.openclose.DeConzOpenClose;
 import me.tresch.deconz.device.presence.DeConzPresence;
 import me.tresch.deconz.dto.light.LightDto;
@@ -26,6 +27,8 @@ public class DeConzDeviceFactory {
         return createDeConzOpenClose(deConzClient, deConzId, sensorDto);
       case ZHAPresence:
         return createDeConzPresence(deConzClient, deConzId, sensorDto);
+      case ZHALightLevel:
+        return createDeConzLightLevel(deConzClient, deConzId, sensorDto);
       default:
         return null;
     }
@@ -65,6 +68,17 @@ public class DeConzDeviceFactory {
 
   private static DeConzPresence createDeConzPresence(DeConzClient deConzClient, String deConzId, SensorDto sensorDto) {
     return DeConzPresence.builder()
+            .deConzClient(deConzClient)
+            .type(sensorDto.getType())
+            .deConzId(deConzId)
+            .deviceId(sensorDto.getUniqueid())
+            .manufacturer(sensorDto.getManufacturername())
+            .modelId(sensorDto.getModelid())
+            .build();
+  }
+
+  private static DeConzLightLevel createDeConzLightLevel(DeConzClient deConzClient, String deConzId, SensorDto sensorDto) {
+    return DeConzLightLevel.builder()
             .deConzClient(deConzClient)
             .type(sensorDto.getType())
             .deConzId(deConzId)

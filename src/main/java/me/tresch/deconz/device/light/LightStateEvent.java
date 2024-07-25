@@ -1,6 +1,5 @@
 package me.tresch.deconz.device.light;
 
-import lombok.Getter;
 import lombok.Value;
 import me.tresch.deconz.device.DeConzEventValue;
 import me.tresch.deconz.dto.light.AlertType;
@@ -10,7 +9,6 @@ import me.tresch.deconz.dto.light.LightStateDto;
 
 import java.util.List;
 
-@Getter
 @Value(staticConstructor = "of")
 public class LightStateEvent implements DeConzEventValue {
   /**

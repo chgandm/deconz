@@ -11,6 +11,7 @@ public enum SensorType {
   ZHASwitch,
   ZHAOpenClose,
   ZHAPresence,
+  ZHALightLevel,
   /**
    * A virtual sensor built into the deCONZ software since version 2.05.12.
    */

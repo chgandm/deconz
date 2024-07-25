@@ -35,5 +35,6 @@ Supported sensor types:
 * Switches (to detect button presses): class `DeConzSwitch`
 * Open / close sensors (for doors and windows):  class `DeConzOpenClose`
 * Presence sensors (to detect motion): class `DeConzPresence`
+* Light level sensors: class `DeConzLightLevel`
 
 Obtain sensors through `deConzDiscovery.discoverSensors()`.
