@@ -12,8 +12,15 @@ public enum SensorType {
   ZHAOpenClose,
   ZHAPresence,
   ZHALightLevel,
+  ZHAHumidity,
+  ZHATemperature,
+  ZHAPressure,
   /**
    * A virtual sensor built into the deCONZ software since version 2.05.12.
    */
-  Daylight
+  Daylight,
+  /**
+   * A virtual sensor built into the deCONZ software since version 2.27.xx.
+   */
+  CLIPDaylightOffset
 }

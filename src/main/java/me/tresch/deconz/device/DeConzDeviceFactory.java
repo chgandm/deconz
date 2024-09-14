@@ -2,6 +2,7 @@ package me.tresch.deconz.device;
 
 import me.tresch.deconz.client.DeConzClient;
 import me.tresch.deconz.device.button.DeConzSwitch;
+import me.tresch.deconz.device.humidity.DeConzHumidity;
 import me.tresch.deconz.device.light.DeConzLight;
 import me.tresch.deconz.device.lightlevel.DeConzLightLevel;
 import me.tresch.deconz.device.openclose.DeConzOpenClose;
@@ -29,6 +30,8 @@ public class DeConzDeviceFactory {
         return createDeConzPresence(deConzClient, deConzId, sensorDto);
       case ZHALightLevel:
         return createDeConzLightLevel(deConzClient, deConzId, sensorDto);
+      case ZHAHumidity:
+        return createDeConzHumidity(deConzClient, deConzId, sensorDto);
       default:
         return null;
     }
@@ -79,6 +82,18 @@ public class DeConzDeviceFactory {
 
   private static DeConzLightLevel createDeConzLightLevel(DeConzClient deConzClient, String deConzId, SensorDto sensorDto) {
     return DeConzLightLevel.builder()
+            .deConzClient(deConzClient)
+            .type(sensorDto.getType())
+            .deConzId(deConzId)
+            .deviceId(sensorDto.getUniqueid())
+            .manufacturer(sensorDto.getManufacturername())
+            .modelId(sensorDto.getModelid())
+            .build();
+  }
+
+
+  private static DeConzHumidity createDeConzHumidity(DeConzClient deConzClient, String deConzId, SensorDto sensorDto) {
+    return DeConzHumidity.builder()
             .deConzClient(deConzClient)
             .type(sensorDto.getType())
             .deConzId(deConzId)
